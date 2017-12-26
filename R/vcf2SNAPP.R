@@ -24,7 +24,7 @@ vcf2SNAPP <- function(vcf, file = "snapp.nex") {
   bgn <- grep("BEGIN", snapp.file)
   snapp.file[bgn] <- "BEGIN CHARACTERS;"
   fmt <- grep("FORMAT", snapp.file)
-  snapp.file[fmt] <- "  FORMAT DATATYPE=STANDARD MISSING=? GAP=- SYMBOLS=\"012\" LABELS=LEFT TRANSPOSE=NO INTERLEAVE=NO;"
+  snapp.file[fmt] <- "  FORMAT DATATYPE=INTEGER MISSING=? GAP=- SYMBOLS=\"012\" LABELS=LEFT TRANSPOSE=NO INTERLEAVE=NO;"
 
   #return(snapp.file)
   write(snapp.file, file)
