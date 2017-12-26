@@ -1,4 +1,4 @@
-#' @title Convert vcfR object to SNAPP format data.
+#' @title Convert vcfR object to SNAPP format data..
 #' @description The function converts vcfR format data to SNAPP nexus format.
 #' @param vcf a vcfR object.
 #' @param outfile name of output file.
