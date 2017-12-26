@@ -1,4 +1,4 @@
-#' @title Convert vcfR object to SNAPP format data.
+#' @title Convert vcfR object to SNAPP format data..
 #' @description The function converts vcfR format data to SNAPP nexus format.
 #' @param vcf a vcfR object.
 #' @param outfile name of output file.
@@ -12,7 +12,12 @@
 
 vcf2SNAPP <- function(vcf, file = "snapp.nex") {
 
+  vcf <- extract.indels(vcf)
+  vcf <- vcf[is.biallelic(vcf),]
+
   gt.filtered <- extract.gt(vcf, element = "GT", as.numeric = T, convertNA = T)
+
+  gt.filtered[is.na(gt.filtered)] <- "?"
 
   gt.filtered <- t(gt.filtered)
 
@@ -24,7 +29,7 @@ vcf2SNAPP <- function(vcf, file = "snapp.nex") {
   bgn <- grep("BEGIN", snapp.file)
   snapp.file[bgn] <- "BEGIN CHARACTERS;"
   fmt <- grep("FORMAT", snapp.file)
-  snapp.file[fmt] <- "  FORMAT DATATYPE=STANDARD MISSING=? GAP=- SYMBOLS=\"012\" LABELS=LEFT TRANSPOSE=NO INTERLEAVE=NO;"
+  snapp.file[fmt] <- "  FORMAT DATATYPE=INTEGER MISSING=? GAP=- SYMBOLS=\"012\" LABELS=LEFT TRANSPOSE=NO INTERLEAVE=NO;"
 
   #return(snapp.file)
   write(snapp.file, file)
