@@ -1,0 +1,32 @@
+#' @title Convert vcfR object to SNAPP format data
+#' @description The function converts vcfR format data to SNAPP nexus format.
+#' @param vcf a vcfR object.
+#' @param outfile name of output file.
+#' @return SNAPP nexus format file.
+#'
+#' @details
+#' This function converts the vcfR object to a SNAPP nexus format file.
+#'
+#'
+#' @export
+
+vcf2SNAPP <- function(vcf, file = "snapp.nex") {
+
+  gt.filtered <- extract.gt(vcf, element = "GT", as.numeric = T, convertNA = T)
+
+  gt.filtered <- t(gt.filtered)
+
+  ape::write.nexus.data(gt.filtered, file)
+
+  snapp.file <- scan(file, what = "character", sep = "\n",
+                     quiet = TRUE)
+
+  bgn <- grep("BEGIN", snapp.file)
+  snapp.file[bgn] <- "BEGIN CHARACTERS;"
+  fmt <- grep("FORMAT", snapp.file)
+  snapp.file[fmt] <- "  FORMAT DATATYPE=STANDARD MISSING=? GAP=- SYMBOLS=\"012\" LABELS=LEFT TRANSPOSE=NO INTERLEAVE=NO;"
+
+  #return(snapp.file)
+  write(snapp.file, file)
+
+}
