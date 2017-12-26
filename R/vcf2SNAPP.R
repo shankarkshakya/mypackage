@@ -12,7 +12,12 @@
 
 vcf2SNAPP <- function(vcf, file = "snapp.nex") {
 
+  vcf <- extract.indels(vcf)
+  vcf <- vcf[is.biallelic(vcf),]
+
   gt.filtered <- extract.gt(vcf, element = "GT", as.numeric = T, convertNA = T)
+
+  gt.filtered[is.na(gt.filtered)] <- "?"
 
   gt.filtered <- t(gt.filtered)
 
