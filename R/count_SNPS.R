@@ -18,6 +18,7 @@
 count_SNPS <- function(dnabin) {
 
   x <- mypackage::seg.sites2codons(dnabin)
+  x <- x[unique(rownames(x)),]
 
   if (length(x != 0 )){
     seg_mat <- vector("list", length = nrow(x))
