@@ -2,7 +2,7 @@
 % Please edit documentation in R/vcf2SNAPP.R
 \name{vcf2SNAPP}
 \alias{vcf2SNAPP}
-\title{Convert vcfR object to SNAPP format data}
+\title{Convert vcfR object to SNAPP format data..}
 \usage{
 vcf2SNAPP(vcf, file = "snapp.nex")
 }

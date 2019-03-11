@@ -7,9 +7,7 @@
 hap.div(dnabin, pop)
 }
 \arguments{
-\item{dnabin}{object.}
-
-\item{pop}{population.}
+\item{DNAbin}{object.}
 }
 \value{
 Haplotype diversity per population
