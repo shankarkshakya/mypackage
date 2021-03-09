@@ -1,5 +1,6 @@
 vcf2QTLseq <- function(vcf){
   
+  require(vcfR)
   #x <- vcfR2tidy(vcf, single_frame = TRUE, format_fields = c("AD", "GT", "GQ", "DP"))
   x <- vcfR2tidy(vcf, single_frame = TRUE, format_fields = c("AD", "DP"))
   mytable <- x$dat
