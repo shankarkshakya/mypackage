@@ -4,10 +4,18 @@
 \alias{modified_heatmap}
 \title{Heatmap to modify vcfR::heatmap.bp.}
 \usage{
-modified_heatmap(x, cbarplot = TRUE, rbarplot = TRUE, legend = TRUE,
-  clabels = TRUE, rlabels = TRUE, na.rm = TRUE, scale = c("row",
-  "column", "none"), col.ramp = viridisLite::viridis(n = 100, alpha = 1),
-  ...)
+modified_heatmap(
+  x,
+  cbarplot = TRUE,
+  rbarplot = TRUE,
+  legend = TRUE,
+  clabels = TRUE,
+  rlabels = TRUE,
+  na.rm = TRUE,
+  scale = c("row", "column", "none"),
+  col.ramp = viridisLite::viridis(n = 100, alpha = 1),
+  ...
+)
 }
 \value{
 image

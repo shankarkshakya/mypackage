@@ -1,4 +1,16 @@
+#' @title Convert vcfR object to QTLseqR format.
+#' @description The function converts vcf file to text format file that can be used by QTLseqR package.
+#' @param vcfR object.
+#' @return text file
+#'
+#' @details
+#' Converts vcfR data format to text file to be used by QTLseqR.
+#'
+#'
+#' @export
+
 vcf2QTLseq <- function(vcf){
+  require(vcfR)
 
   x <- vcfR2tidy(vcf, single_frame = TRUE, format_fields = c("AD", "DP"))
   mytable <- x$dat
