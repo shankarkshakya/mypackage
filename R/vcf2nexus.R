@@ -32,6 +32,6 @@ vcf2nexus <- function(vcf, file = "file.nex") {
   nex.file[fmt] <- "  FORMAT DATATYPE=INTEGER MISSING=? GAP=- SYMBOLS=\"012\" LABELS=LEFT TRANSPOSE=NO INTERLEAVE=NO;"
 
   #return(snapp.file)
-  write(snapp.file, file)
+  write(nex.file, file)
 
 }
